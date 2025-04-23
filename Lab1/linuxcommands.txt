@@ -1,0 +1,95 @@
+Linux command explanation in your report:
+Explain the following Linux command (cp, ps, ls, mv, rm, mkdir,
+rmdir, echo, more, date, time, kill, history, chmod, chown).
+
+For above commands, you are required to: A. Provide a description of
+each function. B. Illustrate its usage with a practical example.
+
+
+cp
+The cp command stands for "Copy", and is used to copy files or directories from one location to another. Example:
+/somedir$ cp source_file.txt destination_file.txt
+
+ps 
+The ps command stands for "Process Status", and is used to display information about running processes. Example:
+/somedir$ ps
+  PID TTY          TIME CMD
+ 1234 pts/0    00:00:01 bash
+ 5678 pts/0    00:00:02 python script.py
+
+ls
+The ls command stands for "List", and is used to list the contents of a directory. Example:
+/somedir$ ls
+file1.txt file2.txt file3.txt
+
+mv
+The mv command stands for "Move", and is used to move or rename files and directories. Example:
+/somedir$ mv old_file.txt new_file.txt
+
+rm
+The rm command stands for "Remove", and is used to delete files or directories. Example:
+/somedir$ rm my_file.txt
+/somedir$ rm -r my_directory
+
+mkdir
+The mkdir command stands for "Make Directory", and is used to create and name a directory/folder. Example:
+/somedir$ mkdir my_directory
+
+rmdir 
+The rmdir command stands for "Remove Directory", and is used to delete an empty directory. Example:
+/somedir$ rmdir my_directory
+output: removes the directory named my_directory if it is empty.
+
+echo 
+The echo command outputs, or echos, the strings it is given. Example:
+/somedir$ echo "Hello, World!"
+Hello, World!
+
+Aternatively by using a " > ", we redirect the echoed output into a file
+/somedir$ echo "Hello, World!" > hello.txt
+output: creates a file named hello.txt with the content "Hello, World!"
+
+more
+The more command is used to view the contents of a file one screen at a time. It allows you to scroll through the file. Example:
+/somedir$ more my_file.txt
+output: Displays the contents of my_file.txt one screen at a time. You can press the spacebar to go to the next page or 'q' to quit.
+
+date
+The date command displays or sets the system date and time. Example:
+/somedir$ date  
+Weekday Month Day hh:mm:ss timezone year
+
+time
+The time command is used to measure the duration of execution of a command. It provides information about the time taken by a command to execute. Example:
+/somedir$ time ls
+real    0m0.002s
+user    0m0.001s
+sys     0m0.001s
+
+kill 
+The kill command is used to terminate processes by sending them a signal. It can be used to stop a process that is running in the background or foreground. Example:
+/somedir$ kill 1234 
+
+history
+The history command displays the list of commands that have been executed in the current shell session. Example:
+/somedir$ history
+  1  ls
+  2  cd somedir
+  3  cp source_file.txt destination_file.txt
+  4  ps
+
+chmod
+The chmod command stands for "Change Mode", and is used to change the file system modes of files and directories, specifically their permissions. Example:
+/somedir$ chmod -x my_script.sh
+chmod is most commonly used with these flags, where:
+-x means remove execute permission
++x means add execute permission
++w means add write permission
+-w means remove write permission
+-r means remove read permission
++r means add read permission
+
+chown
+The chown command stands for "Change Owner", and is used to change the ownership of files and directories. Example:
+/somedir$ chown user:group my_file.txt
+This command changes the owner of my_file.txt to user and the group to group. It is often used by system administrators to manage file permissions and ownership.
