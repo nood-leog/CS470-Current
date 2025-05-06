@@ -1,63 +1,71 @@
 //hello.c
-//to run with makefile
-//make hello
-
-/*
-Write a C program where the main process (parent) creates multiple child
-processes at least 10 child processes.
-Each child process should perform a unique task.
-One of your processes should be “echo "Hello + <Your Name>" ”
-
-2. Child Process Execution:
-• Use fork() to create child processes.
-• In each child process, use an exec function (like execvp) to execute a simple
-command (e.g., ls, echo) or a custom program.
-3. Process Synchronization:
-• After creating child processes, the parent process should use wait() or waitpid() to
-wait for the child processes to complete.
-• Include detailed status reporting after each child process terminates:
-• Report whether the child exited normally or was terminated by a signal.
-• Display the exit status or signal number as appropriate.
-4. Reporting:
-• The parent process should report the completion of each child process.
-• Optionally, each child process can output its PID and the command it is
-executing.
-
-*/
-
+//to run with makefile:
+//  make 
+// ./Hello
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
-int main() {
-    printf("Main function\n");
+int main() 
+{
+    printf("Running...\n");
 
     int status;
-    const int numberofChildren = 3;
+    const int numberofChildren = 10;
+    pid_t pid, cpid;
 
-    char *commands[][10] = {
-        {"ls", "-l", NULL}, 
-        {"echo", "Hello, Alex Boyce!", NULL}, 
-        {"date", NULL}, 
+    char *commands[][10] = 
+    {
+        {"echo", "Hello, Alex Boyce!", NULL}, //1
+        {"echo", "Flags are hard to memorize, so just remember to ask for --help!" , NULL}, //2
+        {"ls", "-s", NULL}, //3
+        {"ls", "-l", NULL},//4
+        {"date", NULL},//5
+        {"uptime", NULL}, //6
+        {"pwd", NULL}, //7
+        {"whoami", NULL}, //8
+        {"cal", NULL}, //9
+        {"ps", NULL} //10
 
     };
 
+    printf("Parent process PID: %d\n", getpid());
 
-    prinf("Parent process PID: %d\n", getpid());
-
-    for (int i=0; i<numberofChildren; i++) {
+    for (int i = 0; i < numberofChildren; i++) 
+    {
         pid = fork();
-        if (pid < 0) {
+        if (pid < 0) 
+        {
             perror("Fork failed");
             exit(EXIT_FAILURE);
-        }
-        else if (pid == 0) {
+        } 
+        else if (pid == 0) 
+        {
             // Child process
-            printf("Child process PID: %d\n", getpid());
+            printf("Child Process PID: %d -- Executing command: %s\n", getpid(), commands[i][0]);
             execvp(commands[i][0], commands[i]);
-            perror("exec failed");
+            // Only reaches here if exec fails
+            perror("Exec failed");
             exit(EXIT_FAILURE);
         }
     }
+
+    // Parent waits for all children
+    for (int i = 0; i < numberofChildren; i++) 
+    {
+        cpid = wait(&status);
+        if (WIFEXITED(status)) 
+        {
+            printf("Child PID %d exited with status %d\n", cpid, WEXITSTATUS(status));
+        } 
+        else if (WIFSIGNALED(status)) 
+        {
+            printf("Child PID %d was terminated by signal %d\n", cpid, WTERMSIG(status));
+        } 
+    }
+
     return 0;
 }

@@ -2,12 +2,24 @@
 CC = gcc
 
 #Define any flags
-CFLAGS= -Wall
+CFLAGS = -Wall
 
-TARGET=Hello
+#Define the target executable
+TARGET = Hello
+
+#Define source and object files
+SRC = Hello.c
+OBJ = Hello.o
 
 all: $(TARGET)
 
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
-$(TARGET): main.o
-	$(CC) $(CFLAGS) -o $(TARGET) main.o
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC)
+
+
+#clean up the object files and the executable
+clean:
+	rm -f $(TARGET) $(OBJ)
