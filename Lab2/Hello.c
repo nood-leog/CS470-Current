@@ -17,19 +17,38 @@ int main()
     const int numberofChildren = 10;
     pid_t pid, cpid;
 
+
     char *commands[][10] = 
     {
+        //echo can be used to print text to the console, for example, our first two commands:
         {"echo", "Hello, Alex Boyce!", NULL}, //1
-        {"echo", "Flags are hard to memorize, so just remember to ask for --help!" , NULL}, //2
-        {"ls", "-s", NULL}, //3
-        {"ls", "-l", NULL},//4
-        {"date", NULL},//5
-        {"uptime", NULL}, //6
-        {"pwd", NULL}, //7
-        {"whoami", NULL}, //8
-        {"cal", NULL}, //9
-        {"ps", NULL} //10
 
+        //ls -l is used to list files in long format, showing permissions, owner, group, size, and modification date
+        {"ls", "-l", NULL},//2
+
+        //groups is used to display the groups the current user belongs to
+        {"groups", NULL},//3
+
+        //date is used to display the current date and time
+        {"date", NULL},//4
+
+        //uptime is used to show how long the system has been running
+        {"uptime", NULL}, //5
+
+        //pwd is used to print the current working directory
+        {"pwd", NULL}, //6
+
+        //whoami is used to display the username of the current user
+        {"whoami", NULL}, //7
+
+        //uname -a is used to display system information, including kernel name, version, and architecture
+        {"uname", "-a", NULL}, //8
+
+        //cal is used to display a calendar, in this case, the current month
+        {"cal", NULL}, //9
+
+        //ps is used to display information about running processes
+        {"ps", NULL}, //10
     };
 
     printf("Parent process PID: %d\n", getpid());
