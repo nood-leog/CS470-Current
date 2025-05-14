@@ -1,4 +1,4 @@
-#LAB 2 MAKEFILE
+#LAB 3 MAKEFILE
 
 #Define the C compiler to use
 CC = gcc
@@ -7,11 +7,11 @@ CC = gcc
 CFLAGS = -Wall
 
 #Define the target executable
-TARGET = Hello
+TARGET = FCFS
 
 #Define source and object files
-SRC = Hello.c
-OBJ = Hello.o
+SRC = FCFS.c
+OBJ = FCFS.o
 
 all: $(TARGET)
 
