@@ -1,7 +1,7 @@
 //Boyce_libFC.h
 
-#ifndef LIBFS2025_H
-#define LIBFS2025_H
+#ifndef Boyce_libFC_H
+#define Boyce_libFC_H
 
 #include <stdio.h>
 #include <stdlib.h>

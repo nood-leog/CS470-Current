@@ -1,7 +1,10 @@
 //Boyce_testFC.c
 
+//cd /home/alex/Workspace/CS470-Current/Lab4
+
 //to run:
 //make Boyce_testFC
+//./Boyce_testFC
 
 #include "Boyce_libFC.h"
 #include <ctype.h>  // For tolower()
