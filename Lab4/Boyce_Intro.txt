@@ -1,0 +1,11 @@
+Hello, my name is Alex Boyce.
+
+I am currently pursuing two bachelor's degrees in both computer science and psychology. I am passionate about using code as a medium for creativity, and also systems programming.
+I also really like to program arduino boards and other microcontrollers like the RP2040.
+On the side I have been teaching myself Flutter and Dart and building out a personal website.
+
+In the time I am not in front of a computer, I enjoy dirt biking, hiking, and spending time with my cats.
+I also remotely work full time as a security operations analyst for a startup based in Salt Lake City.
+
+This project involves creating a file system library in C.
+The library allows for basic file operations such as creating, opening, writing, reading, closing, and deleting files.
